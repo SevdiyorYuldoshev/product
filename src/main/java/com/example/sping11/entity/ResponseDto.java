@@ -13,7 +13,7 @@ public class ResponseDto<T> {
 
     private String message;
 
-    private int code;
+    private int code; // 0 -> OK, -1 -> Not Found, 1 -> Validation error 2 -> Database error
 
     private T data;
 }
