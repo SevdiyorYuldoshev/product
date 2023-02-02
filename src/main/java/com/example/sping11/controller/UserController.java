@@ -35,7 +35,7 @@ public class UserController {
         return userService.delete(id);
     }
 
-    @PutMapping("/filling")
+    @PutMapping("/{id}/{fillingAmount}")
     ResponseDto<User> fillingUser(@PathVariable Integer id, @PathVariable Double fillingAmount){
         return userService.filling(id, fillingAmount);
     }

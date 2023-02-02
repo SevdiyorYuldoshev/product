@@ -37,6 +37,13 @@ public class UserService {
                     .build();
         }
 
+        if (adduser.getCash() < 0D && adduser.getName().length() == 0 && adduser.getSurname().length() == 0) {
+            return ResponseDto.<User>builder()
+                    .message("Ma'lumot to'g'ri emas")
+                    .code(-1)
+                    .build();
+        }
+
         users.add(adduser);
 
         return ResponseDto.<User>builder()
@@ -63,6 +70,13 @@ public class UserService {
     public ResponseDto<User> update(User user) {
         Optional<User> updateUser = users.stream().filter(u -> u.getId().equals(user.getId())).findFirst();
 
+
+        if (user.getCash() < 0D && user.getName().length() == 0 && user.getSurname().length() == 0) {
+            return ResponseDto.<User>builder()
+                    .message("Ma'lumot to'g'ri emas")
+                    .code(-1)
+                    .build();
+        }
 
         return ResponseDto.<User>builder()
                 .success(updateUser.isPresent())
